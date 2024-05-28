@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983576de5b0c4ea3ae9873d761fca3da, type: 3}
+  m_Name: AdSystemInstaller
+  m_EditorClassIdentifier: 
+  _settings:
+    <ApplovinSettings>k__BackingField:
+      <SDKKey>k__BackingField: JJXtMByMsUWo624ZhW_pAe0FSx7CM9lz11PT1RV1uIktB1qbkt9sXDurVcX15HbRJVqCDHsrAmwOqJf37z3tOg
+      <UserId>k__BackingField: 
+      <AdMobAndroidAppId>k__BackingField: ca-app-pub-9867735798246724~6296843904
+      <Android>k__BackingField:
+        <Banner>k__BackingField:
+          <Identifier>k__BackingField: 4afeea918b059f20
+          <RefreshTimeout>k__BackingField: 10
+        <Interstitial>k__BackingField:
+          <Identifier>k__BackingField: 689d82480dbb279a
+        <Rewarded>k__BackingField:
+          <Identifier>k__BackingField: 640484aca7de64c7
+      <AdMobIOSAppId>k__BackingField: ca-app-pub-8052072042557643~7759569276
+      <IOS>k__BackingField:
+        <Banner>k__BackingField:
+          <Identifier>k__BackingField: 6874de301e66c763
+          <RefreshTimeout>k__BackingField: 10
+        <Interstitial>k__BackingField:
+          <Identifier>k__BackingField: 9175aa594d7b588f
+        <Rewarded>k__BackingField:
+          <Identifier>k__BackingField: 448241705d202b85
