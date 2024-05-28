@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AppLovinSettings
   m_EditorClassIdentifier: 
   qualityServiceEnabled: 1
-  sdkKey: 
+  sdkKey: JJXtMByMsUWo624ZhW_pAe0FSx7CM9lz11PT1RV1uIktB1qbkt9sXDurVcX15HbRJVqCDHsrAmwOqJf37z3tOg
   setAttributionReportEndpoint: 0
   addApsSkAdNetworkIds: 0
   customGradleVersionUrl: 
@@ -31,6 +31,6 @@ MonoBehaviour:
   userTrackingUsageDescriptionKo: 
   userTrackingUsageDescriptionZhHans: 
   userTrackingUsageDescriptionZhHant: default_localization
-  adMobAndroidAppId: 
-  adMobIosAppId: 
+  adMobAndroidAppId: ca-app-pub-9867735798246724~6296843904
+  adMobIosAppId: ca-app-pub-8052072042557643~7759569276
   showInternalSettingsInIntegrationManager: 0
