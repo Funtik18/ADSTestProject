@@ -41,9 +41,6 @@ namespace Casual.ADS
             ApplovinSetup();
 #endif
 
-            AudienceNetwork.AdSettings.SetAdvertiserTrackingEnabled( true );
-            AudienceNetwork.AdSettings.SetDataProcessingOptions( new string[] {} );
-            
             MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>
             {
                 MaxSdk.SetVerboseLogging( true );
@@ -54,6 +51,9 @@ namespace Casual.ADS
 #else
                 MaxSdk.SetCreativeDebuggerEnabled( true );
 #endif
+                
+                AudienceNetwork.AdSettings.SetAdvertiserTrackingEnabled( true );
+                AudienceNetwork.AdSettings.SetDataProcessingOptions( new string[] {} );
                 
 #if UNITY_ANDROID
                 Debug.Log( $"[AdSystem] Android AppTrackingStatus {sdkConfiguration.AppTrackingStatus}" );
@@ -68,8 +68,6 @@ namespace Casual.ADS
                 Rewarded.Load();
             };
             
-            Debug.Log("[AdSystem] AudienceNetworkAds Initialized.");
-
             Debug.Log("[AdSystem] MaxSdk Start Initialization.");
             MaxSdk.SetSdkKey(settings.ApplovinSettings.SDKKey);
             //MaxSdk.SetUserId("USER_ID");
