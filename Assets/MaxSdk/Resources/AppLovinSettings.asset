@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qualityServiceEnabled: 1
   sdkKey: JJXtMByMsUWo624ZhW_pAe0FSx7CM9lz11PT1RV1uIktB1qbkt9sXDurVcX15HbRJVqCDHsrAmwOqJf37z3tOg
-  setAttributionReportEndpoint: 0
+  setAttributionReportEndpoint: 1
   addApsSkAdNetworkIds: 0
   customGradleVersionUrl: 
   customGradleToolsVersion: 

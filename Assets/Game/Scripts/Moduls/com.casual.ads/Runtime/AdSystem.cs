@@ -44,6 +44,7 @@ namespace Casual.ADS
             {
                 MaxSdk.SetVerboseLogging( true );
                 MaxSdk.SetIsAgeRestrictedUser( false );
+                MaxSdk.SetDoNotSell(false);
 #if DISABLE_SRDEBUGGER
                 MaxSdk.SetCreativeDebuggerEnabled(false);
 #else
@@ -52,11 +53,6 @@ namespace Casual.ADS
                 
 #if UNITY_IOS || UNITY_IPHONE
                 Debug.Log( $"[AdSystem] iOS AppTrackingStatus {sdkConfiguration.AppTrackingStatus}" );
-                if (MaxSdkUtils.CompareVersions(UnityEngine.iOS.Device.systemVersion, "14.5") != MaxSdkUtils.VersionComparisonResult.Lesser)
-                {
-                    // Debug.Log( $"[AdSystem] iOS set Meta ATE flag" );
-                    // sdkConfiguration.AppTrackingStatus
-                }
 #endif
                 Debug.Log("[AdSystem] MaxSdk Initialized.");
                 
@@ -64,13 +60,27 @@ namespace Casual.ADS
                 Rewarded.Load();
             };
             
-            AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
-            Debug.Log("[AdSystem] AudienceNetworkAds Initialized.");
+            
+            var cmpService = MaxSdk.CmpService;
+            cmpService.ShowCmpForExistingUser(error =>
+            {
+                if (null == error)
+                {
+                    Debug.Log( "[CMP] The CMP alert was shown successfully." );
+                    
+                    AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
+                    Debug.Log("[AdSystem] AudienceNetworkAds Initialized.");
 
-            Debug.Log("[AdSystem] MaxSdk Start Initialization.");
-            MaxSdk.SetSdkKey(settings.ApplovinSettings.SDKKey);
-            //MaxSdk.SetUserId("USER_ID");
-            MaxSdk.InitializeSdk();
+                    Debug.Log("[AdSystem] MaxSdk Start Initialization.");
+                    MaxSdk.SetSdkKey(settings.ApplovinSettings.SDKKey);
+                    //MaxSdk.SetUserId("USER_ID");
+                    MaxSdk.InitializeSdk();
+                }
+                else
+                {
+                    Debug.LogError( "[CMP] The CMP alert was shown successfully." );
+                }
+            });
         }
 
 #if UNITY_EDITOR
