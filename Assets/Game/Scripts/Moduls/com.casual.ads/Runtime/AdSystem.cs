@@ -54,8 +54,8 @@ namespace Casual.ADS
                 Debug.Log( $"[AdSystem] iOS AppTrackingStatus {sdkConfiguration.AppTrackingStatus}" );
                 if (MaxSdkUtils.CompareVersions(UnityEngine.iOS.Device.systemVersion, "14.5") != MaxSdkUtils.VersionComparisonResult.Lesser)
                 {
-                    Debug.Log( $"[AdSystem] iOS set Meta ATE flag" );
-                    AudienceNetwork.AdSettings.SetAdvertiserTrackingEnabled(true);
+                    // Debug.Log( $"[AdSystem] iOS set Meta ATE flag" );
+                    // sdkConfiguration.AppTrackingStatus
                 }
 #endif
                 Debug.Log("[AdSystem] MaxSdk Initialized.");
@@ -64,7 +64,6 @@ namespace Casual.ADS
                 Rewarded.Load();
             };
             
-            AudienceNetworkAds.Initialize();
             AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
             Debug.Log("[AdSystem] AudienceNetworkAds Initialized.");
 
