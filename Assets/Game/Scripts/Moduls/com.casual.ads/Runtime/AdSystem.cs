@@ -1,3 +1,4 @@
+using AudienceNetwork;
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -48,11 +49,24 @@ namespace Casual.ADS
 #else
                 MaxSdk.SetCreativeDebuggerEnabled( true );
 #endif
+                
+#if UNITY_IOS || UNITY_IPHONE
+                Debug.Log( $"[AdSystem] iOS AppTrackingStatus {sdkConfiguration.AppTrackingStatus}" );
+                if (MaxSdkUtils.CompareVersions(UnityEngine.iOS.Device.systemVersion, "14.5") != MaxSdkUtils.VersionComparisonResult.Lesser)
+                {
+                    Debug.Log( $"[AdSystem] iOS set Meta ATE flag" );
+                    AudienceNetwork.AdSettings.SetAdvertiserTrackingEnabled(true);
+                }
+#endif
                 Debug.Log("[AdSystem] MaxSdk Initialized.");
                 
                 Interstitial.Load();
                 Rewarded.Load();
             };
+            
+            AudienceNetworkAds.Initialize();
+            AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
+            Debug.Log("[AdSystem] AudienceNetworkAds Initialized.");
 
             Debug.Log("[AdSystem] MaxSdk Start Initialization.");
             MaxSdk.SetSdkKey(settings.ApplovinSettings.SDKKey);
