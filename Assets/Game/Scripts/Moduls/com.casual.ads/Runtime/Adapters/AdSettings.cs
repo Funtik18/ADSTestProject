@@ -5,7 +5,6 @@ namespace AudienceNetwork
 {
     public static class AdSettings
     {
-
         public static void SetDataProcessingOptions(string[] dataProcessingOptions)
         {
 #if UNITY_ANDROID
@@ -29,8 +28,18 @@ namespace AudienceNetwork
             FBAdSettingsBridgeSetDetailedDataProcessingOptions(dataProcessingOptions, dataProcessingOptions.Length, country, state);
 #endif
         }
-
+        
+        public static void SetAdvertiserTrackingEnabled( bool advertiserTrackingEnabled )
+        {
 #if UNITY_IOS
+            FBAdSettingsBridgeSetAdvertiserTrackingEnabled(advertiserTrackingEnabled);
+#endif
+        }
+        
+#if UNITY_IOS
+            [DllImport("__Internal")] 
+            private static extern void FBAdSettingsBridgeSetAdvertiserTrackingEnabled(bool advertiserTrackingEnabled);
+
             [DllImport("__Internal")]
             private static extern void FBAdSettingsBridgeSetDataProcessingOptions(string[] dataProcessingOptions, int length);
 

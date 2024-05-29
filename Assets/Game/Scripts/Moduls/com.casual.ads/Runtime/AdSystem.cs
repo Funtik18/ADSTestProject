@@ -40,6 +40,10 @@ namespace Casual.ADS
 #if UNITY_EDITOR
             ApplovinSetup();
 #endif
+
+            AudienceNetwork.AdSettings.SetAdvertiserTrackingEnabled( true );
+            AudienceNetwork.AdSettings.SetDataProcessingOptions( new string[] {} );
+            
             MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>
             {
                 MaxSdk.SetVerboseLogging( true );
@@ -51,8 +55,12 @@ namespace Casual.ADS
                 MaxSdk.SetCreativeDebuggerEnabled( true );
 #endif
                 
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_ANDROID
+                Debug.Log( $"[AdSystem] Android AppTrackingStatus {sdkConfiguration.AppTrackingStatus}" );
+                MaxSdk.SetHasUserConsent( true );
+#elif UNITY_IOS || UNITY_IPHONE
                 Debug.Log( $"[AdSystem] iOS AppTrackingStatus {sdkConfiguration.AppTrackingStatus}" );
+                MaxSdk.SetHasUserConsent( sdkConfiguration.AppTrackingStatus == MaxSdkBase.AppTrackingStatus.Authorized );
 #endif
                 Debug.Log("[AdSystem] MaxSdk Initialized.");
                 
@@ -60,7 +68,6 @@ namespace Casual.ADS
                 Rewarded.Load();
             };
             
-            AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
             Debug.Log("[AdSystem] AudienceNetworkAds Initialized.");
 
             Debug.Log("[AdSystem] MaxSdk Start Initialization.");
