@@ -60,27 +60,13 @@ namespace Casual.ADS
                 Rewarded.Load();
             };
             
-            
-            var cmpService = MaxSdk.CmpService;
-            cmpService.ShowCmpForExistingUser(error =>
-            {
-                if (null == error)
-                {
-                    Debug.Log( "[CMP] The CMP alert was shown successfully." );
-                    
-                    AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
-                    Debug.Log("[AdSystem] AudienceNetworkAds Initialized.");
+            AudienceNetwork.AdSettings.SetDataProcessingOptions(new string[] { });
+            Debug.Log("[AdSystem] AudienceNetworkAds Initialized.");
 
-                    Debug.Log("[AdSystem] MaxSdk Start Initialization.");
-                    MaxSdk.SetSdkKey(settings.ApplovinSettings.SDKKey);
-                    //MaxSdk.SetUserId("USER_ID");
-                    MaxSdk.InitializeSdk();
-                }
-                else
-                {
-                    Debug.LogError( "[CMP] The CMP alert was shown successfully." );
-                }
-            });
+            Debug.Log("[AdSystem] MaxSdk Start Initialization.");
+            MaxSdk.SetSdkKey(settings.ApplovinSettings.SDKKey);
+            //MaxSdk.SetUserId("USER_ID");
+            MaxSdk.InitializeSdk();
         }
 
 #if UNITY_EDITOR
