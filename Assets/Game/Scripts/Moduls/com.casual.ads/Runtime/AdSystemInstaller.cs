@@ -1,3 +1,4 @@
+using Game;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +17,8 @@ namespace Casual.ADS
             Container.Bind< AdInterstitial >().To< AdMaxInterstitial >().AsSingle();
             Container.Bind< AdRewarded >().To< AdMaxRewarded >().AsSingle();
             Container.BindInterfacesAndSelfTo< AdSystem >().AsSingle().NonLazy();
+
+            Container.Bind< FacebookManager >().AsSingle().NonLazy();
         }
     }
 }
